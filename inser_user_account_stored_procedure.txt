@@ -1,0 +1,60 @@
+USE [ONLINE_DATABASE_SYSTEM]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_InsertUserAccount]    Script Date: 27/06/2023 10:44:58 pm ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[sp_InsertUserAccount]
+(
+@UserName varchar(50),
+@Email varchar(50),
+@UserPassword varchar(50),
+@UserRePassword varchar(50),
+@Firstname varchar(50),
+@Lastname varchar(50),
+@Gender varchar(50),
+@Age int,
+@ContactNumber varchar(50),
+@Address varchar(50),
+@imgext varchar(50),
+@imgname varchar(50),
+@imgpath varchar(550)
+--@Userid int out
+)
+as
+begin 
+--declare @RowCount int = 0
+--set @RowCount = (Select count(1) from dbo.UserReg where UserName = @UserName or Email = @Email)
+
+	begin try 
+		begin tran
+		
+		--if (@RowCount = 0)
+		--try
+		IF EXISTS(SELECT Userid FROM UserReg WHERE Username = @Username)
+       BEGIN
+              SELECT -1 AS Userid -- Username exists.
+       END
+       ELSE IF EXISTS(SELECT Userid FROM UserReg WHERE Email = @Email)
+       BEGIN
+              SELECT -2 AS Userid -- Email exists.
+       END
+       ELSE
+		--try end
+		begin
+			insert into dbo.UserReg(UserName,Email,UserPassword,UserRePassword,Firstname,Lastname,Gender,Age,ContactNumber,Address,imgext,imgname,imgpath)
+			values (@UserName,@Email,@UserPassword,@UserRePassword,@Firstname,@Lastname,@Gender,@Age,@ContactNumber,@Address,@imgext,@imgname,@imgpath )
+			
+			
+			SELECT SCOPE_IDENTITY() AS Userid
+		end
+		
+
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		select ERROR_MESSAGE()
+	end catch
+end

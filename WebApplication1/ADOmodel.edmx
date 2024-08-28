@@ -1,0 +1,1265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ONLINE_DATABASE_SYSTEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.ApplicableStatusList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ApplicableStatusList">
+          <Key>
+            <PropertyRef Name="ApplicableStatusId" />
+          </Key>
+          <Property Name="ApplicableStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.ApprovalStatusList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ApprovalStatusList">
+          <Key>
+            <PropertyRef Name="ApprovalStatusListId" />
+          </Key>
+          <Property Name="ApprovalStatusListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApprovStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.BusinessClassification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BusinessClassification">
+          <Key>
+            <PropertyRef Name="ClassificationId" />
+            <PropertyRef Name="Classification" />
+          </Key>
+          <Property Name="ClassificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Classification" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BusinessTypeId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.BusinessRequirement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BusinessRequirement">
+          <Key>
+            <PropertyRef Name="BusinessRequirementId" />
+          </Key>
+          <Property Name="BusinessRequirementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequirementListId" Type="varchar" MaxLength="50" />
+          <Property Name="ExpirationDate" Type="date" />
+          <Property Name="ExpirationStatus" Type="bit" />
+          <Property Name="ApplicableStatus" Type="bit" />
+          <Property Name="UserRemarks" Type="varchar" MaxLength="250" />
+          <Property Name="AdminRemarks" Type="varchar" MaxLength="250" />
+          <Property Name="SubmissionStatus" Type="varchar" MaxLength="50" />
+          <Property Name="SerialNo" Type="varchar" MaxLength="50" />
+          <Property Name="ApprovalStatus" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessId" Type="varchar" MaxLength="50" />
+          <Property Name="RequirementId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.ExpirationStatusList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExpirationStatusList">
+          <Key>
+            <PropertyRef Name="ExpirationStatusId" />
+          </Key>
+          <Property Name="ExpirationStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.GenderTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GenderTable">
+          <Key>
+            <PropertyRef Name="GenderId" />
+            <PropertyRef Name="Gender" />
+          </Key>
+          <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.RequirementList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RequirementList">
+          <Key>
+            <PropertyRef Name="RequirementId" />
+          </Key>
+          <Property Name="RequirementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Requirement" Type="varchar" MaxLength="100" />
+          <Property Name="BusinessClassificationId" Type="varchar" MaxLength="50" />
+          <Property Name="CountingNumber" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.RequirementPerClassification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RequirementPerClassification">
+          <Key>
+            <PropertyRef Name="RequirementPerClassificationId" />
+          </Key>
+          <Property Name="RequirementPerClassificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequirementId" Type="varchar" MaxLength="10" />
+          <Property Name="BusinessClassificationId" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.SubmissionStatusList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SubmissionStatusList">
+          <Key>
+            <PropertyRef Name="SubmissionStatusId" />
+          </Key>
+          <Property Name="SubmissionStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.Table_2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Table_2">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.tbl_ProductMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_ProductMaster">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="50" />
+          <Property Name="ClassificationId" Type="varchar" MaxLength="50" />
+          <Property Name="StatusId" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessAddress" Type="varchar" MaxLength="200" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="300" />
+          <Property Name="Website" Type="varchar" MaxLength="500" />
+          <Property Name="ImageLink" Type="varchar" MaxLength="700" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="100" />
+          <Property Name="BusinessOwner" Type="varchar" MaxLength="100" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ImageFileName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.tblCountries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblCountries">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Country" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.UserActivation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserActivation">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ActivationCode" />
+          </Key>
+          <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ONLINE_DATABASE_SYSTEM.dbo.UserReg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserReg">
+          <Key>
+            <PropertyRef Name="Userid" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="UserPassword" />
+            <PropertyRef Name="UserRePassword" />
+            <PropertyRef Name="Firstname" />
+            <PropertyRef Name="Lastname" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="ContactNumber" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="EmailConfirmed" />
+          </Key>
+          <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRePassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="imgname" Type="varchar" MaxLength="100" />
+          <Property Name="imgext" Type="varchar" MaxLength="100" />
+          <Property Name="imgpath" Type="varchar" MaxLength="500" />
+          <Property Name="AccountRole" Type="varchar" MaxLength="50" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+        </EntityType>
+        <Function Name="PopulateAllRequirements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClassificationId" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PopulateApplicableStatusList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PopulateApprovalStatusList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PopulateBusinessClassification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PopulateExpirationStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PopulateSubmissionStatusList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ReportCountofBusinessPerClassification" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_AdminSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchtitle" Type="varchar" Mode="In" />
+          <Parameter Name="userid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetAllProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetbyRequirementID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="requirementid" Type="int" Mode="In" />
+          <Parameter Name="BusinessId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetProductID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertorUpdateRequirement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="businessrequirementid" Type="int" Mode="In" />
+          <Parameter Name="expirationdate" Type="date" Mode="In" />
+          <Parameter Name="expirationstatus" Type="varchar" Mode="In" />
+          <Parameter Name="applicablestatus" Type="varchar" Mode="In" />
+          <Parameter Name="serialno" Type="varchar" Mode="In" />
+          <Parameter Name="RequirementId" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessId" Type="varchar" Mode="In" />
+          <Parameter Name="ApprovalStatus" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BusinessName" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessOwner" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessAddress" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Website" Type="varchar" Mode="In" />
+          <Parameter Name="ImageLink" Type="varchar" Mode="In" />
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+          <Parameter Name="ClassificationId" Type="varchar" Mode="In" />
+          <Parameter Name="StatusId" Type="varchar" Mode="In" />
+          <Parameter Name="ImageFileName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertUserAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="UserPassword" Type="varchar" Mode="In" />
+          <Parameter Name="UserRePassword" Type="varchar" Mode="In" />
+          <Parameter Name="Firstname" Type="varchar" Mode="In" />
+          <Parameter Name="Lastname" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+          <Parameter Name="Age" Type="int" Mode="In" />
+          <Parameter Name="ContactNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="imgext" Type="varchar" Mode="In" />
+          <Parameter Name="imgname" Type="varchar" Mode="In" />
+          <Parameter Name="imgpath" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertUserActivation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="ActivationCode" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_PopulateGender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ReportListOfBusiness" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="searchtitle" Type="varchar" Mode="In" />
+          <Parameter Name="userid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="BusinessName" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessOwner" Type="varchar" Mode="In" />
+          <Parameter Name="BusinessAddress" Type="varchar" Mode="In" />
+          <Parameter Name="ContactNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Website" Type="varchar" Mode="In" />
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+          <Parameter Name="ClassificationId" Type="varchar" Mode="In" />
+          <Parameter Name="StatusId" Type="varchar" Mode="In" />
+          <Parameter Name="ImageFileName" Type="varchar" Mode="In" />
+          <Parameter Name="ImageLink" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UserAccountEmailConfirmed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="activationCode" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="Userlogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ONLINE_DATABASE_SYSTEMModelStoreContainer">
+          <EntitySet Name="ApplicableStatusList" EntityType="Self.ApplicableStatusList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ApplicableStatusList].[ApplicableStatusId] AS [ApplicableStatusId], 
+    [ApplicableStatusList].[AppStatus] AS [AppStatus]
+    FROM [dbo].[ApplicableStatusList] AS [ApplicableStatusList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ApprovalStatusList" EntityType="Self.ApprovalStatusList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ApprovalStatusList].[ApprovalStatusListId] AS [ApprovalStatusListId], 
+    [ApprovalStatusList].[ApprovStatus] AS [ApprovStatus]
+    FROM [dbo].[ApprovalStatusList] AS [ApprovalStatusList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BusinessClassification" EntityType="Self.BusinessClassification" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BusinessClassification].[ClassificationId] AS [ClassificationId], 
+    [BusinessClassification].[Classification] AS [Classification], 
+    [BusinessClassification].[BusinessTypeId] AS [BusinessTypeId]
+    FROM [dbo].[BusinessClassification] AS [BusinessClassification]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BusinessRequirement" EntityType="Self.BusinessRequirement" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BusinessRequirement].[BusinessRequirementId] AS [BusinessRequirementId], 
+    [BusinessRequirement].[RequirementListId] AS [RequirementListId], 
+    [BusinessRequirement].[ExpirationDate] AS [ExpirationDate], 
+    [BusinessRequirement].[ExpirationStatus] AS [ExpirationStatus], 
+    [BusinessRequirement].[ApplicableStatus] AS [ApplicableStatus], 
+    [BusinessRequirement].[UserRemarks] AS [UserRemarks], 
+    [BusinessRequirement].[AdminRemarks] AS [AdminRemarks], 
+    [BusinessRequirement].[SubmissionStatus] AS [SubmissionStatus], 
+    [BusinessRequirement].[SerialNo] AS [SerialNo], 
+    [BusinessRequirement].[ApprovalStatus] AS [ApprovalStatus], 
+    [BusinessRequirement].[BusinessId] AS [BusinessId], 
+    [BusinessRequirement].[RequirementId] AS [RequirementId]
+    FROM [dbo].[BusinessRequirement] AS [BusinessRequirement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ExpirationStatusList" EntityType="Self.ExpirationStatusList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ExpirationStatusList].[ExpirationStatusId] AS [ExpirationStatusId], 
+    [ExpirationStatusList].[ExpStatus] AS [ExpStatus]
+    FROM [dbo].[ExpirationStatusList] AS [ExpirationStatusList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GenderTable" EntityType="Self.GenderTable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GenderTable].[GenderId] AS [GenderId], 
+    [GenderTable].[Gender] AS [Gender]
+    FROM [dbo].[GenderTable] AS [GenderTable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RequirementList" EntityType="Self.RequirementList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RequirementList].[RequirementId] AS [RequirementId], 
+    [RequirementList].[Requirement] AS [Requirement], 
+    [RequirementList].[BusinessClassificationId] AS [BusinessClassificationId], 
+    [RequirementList].[CountingNumber] AS [CountingNumber]
+    FROM [dbo].[RequirementList] AS [RequirementList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RequirementPerClassification" EntityType="Self.RequirementPerClassification" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RequirementPerClassification].[RequirementPerClassificationId] AS [RequirementPerClassificationId], 
+    [RequirementPerClassification].[RequirementId] AS [RequirementId], 
+    [RequirementPerClassification].[BusinessClassificationId] AS [BusinessClassificationId]
+    FROM [dbo].[RequirementPerClassification] AS [RequirementPerClassification]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SubmissionStatusList" EntityType="Self.SubmissionStatusList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SubmissionStatusList].[SubmissionStatusId] AS [SubmissionStatusId], 
+    [SubmissionStatusList].[SubStatus] AS [SubStatus]
+    FROM [dbo].[SubmissionStatusList] AS [SubmissionStatusList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Table_2" EntityType="Self.Table_2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_2].[id] AS [id], 
+    [Table_2].[username] AS [username]
+    FROM [dbo].[Table_2] AS [Table_2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_ProductMaster" EntityType="Self.tbl_ProductMaster" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_ProductMaster].[ProductID] AS [ProductID], 
+    [tbl_ProductMaster].[ProductName] AS [ProductName], 
+    [tbl_ProductMaster].[Price] AS [Price], 
+    [tbl_ProductMaster].[Qty] AS [Qty], 
+    [tbl_ProductMaster].[Remarks] AS [Remarks], 
+    [tbl_ProductMaster].[ClassificationId] AS [ClassificationId], 
+    [tbl_ProductMaster].[StatusId] AS [StatusId], 
+    [tbl_ProductMaster].[BusinessAddress] AS [BusinessAddress], 
+    [tbl_ProductMaster].[ContactNumber] AS [ContactNumber], 
+    [tbl_ProductMaster].[Email] AS [Email], 
+    [tbl_ProductMaster].[Website] AS [Website], 
+    [tbl_ProductMaster].[ImageLink] AS [ImageLink], 
+    [tbl_ProductMaster].[BusinessName] AS [BusinessName], 
+    [tbl_ProductMaster].[BusinessOwner] AS [BusinessOwner], 
+    [tbl_ProductMaster].[UserId] AS [UserId], 
+    [tbl_ProductMaster].[ImageFileName] AS [ImageFileName]
+    FROM [dbo].[tbl_ProductMaster] AS [tbl_ProductMaster]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblCountries" EntityType="Self.tblCountries" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblCountries].[Id] AS [Id], 
+    [tblCountries].[Country] AS [Country], 
+    [tblCountries].[OnDate] AS [OnDate]
+    FROM [dbo].[tblCountries] AS [tblCountries]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserActivation" EntityType="Self.UserActivation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserActivation].[ActivationCode] AS [ActivationCode], 
+    [UserActivation].[UserId] AS [UserId]
+    FROM [dbo].[UserActivation] AS [UserActivation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserReg" EntityType="Self.UserReg" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserReg].[Userid] AS [Userid], 
+    [UserReg].[UserName] AS [UserName], 
+    [UserReg].[Email] AS [Email], 
+    [UserReg].[UserPassword] AS [UserPassword], 
+    [UserReg].[UserRePassword] AS [UserRePassword], 
+    [UserReg].[Firstname] AS [Firstname], 
+    [UserReg].[Lastname] AS [Lastname], 
+    [UserReg].[Gender] AS [Gender], 
+    [UserReg].[Age] AS [Age], 
+    [UserReg].[ContactNumber] AS [ContactNumber], 
+    [UserReg].[Address] AS [Address], 
+    [UserReg].[imgname] AS [imgname], 
+    [UserReg].[imgext] AS [imgext], 
+    [UserReg].[imgpath] AS [imgpath], 
+    [UserReg].[AccountRole] AS [AccountRole], 
+    [UserReg].[EmailConfirmed] AS [EmailConfirmed]
+    FROM [dbo].[UserReg] AS [UserReg]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ONLINE_DATABASE_SYSTEMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicableStatusList">
+          <Key>
+            <PropertyRef Name="ApplicableStatusId" />
+          </Key>
+          <Property Name="ApplicableStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApprovalStatusList">
+          <Key>
+            <PropertyRef Name="ApprovalStatusListId" />
+          </Key>
+          <Property Name="ApprovalStatusListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApprovStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BusinessClassification">
+          <Key>
+            <PropertyRef Name="ClassificationId" />
+            <PropertyRef Name="Classification" />
+          </Key>
+          <Property Name="ClassificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Classification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BusinessTypeId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BusinessRequirement">
+          <Key>
+            <PropertyRef Name="BusinessRequirementId" />
+          </Key>
+          <Property Name="BusinessRequirementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequirementListId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <Property Name="ExpirationStatus" Type="Boolean" />
+          <Property Name="ApplicableStatus" Type="Boolean" />
+          <Property Name="UserRemarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AdminRemarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SubmissionStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SerialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApprovalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ExpirationStatusList">
+          <Key>
+            <PropertyRef Name="ExpirationStatusId" />
+          </Key>
+          <Property Name="ExpirationStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GenderTable">
+          <Key>
+            <PropertyRef Name="GenderId" />
+            <PropertyRef Name="Gender" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequirementList">
+          <Key>
+            <PropertyRef Name="RequirementId" />
+          </Key>
+          <Property Name="RequirementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Requirement" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessClassificationId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountingNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RequirementPerClassification">
+          <Key>
+            <PropertyRef Name="RequirementPerClassificationId" />
+          </Key>
+          <Property Name="RequirementPerClassificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequirementId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessClassificationId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SubmissionStatusList">
+          <Key>
+            <PropertyRef Name="SubmissionStatusId" />
+          </Key>
+          <Property Name="SubmissionStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Table_2">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_ProductMaster">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClassificationId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ImageLink" Type="String" MaxLength="700" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessOwner" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ImageFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblCountry">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Country" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="ONLINE_DATABASE_SYSTEMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicableStatusLists" EntityType="Self.ApplicableStatusList" />
+          <EntitySet Name="ApprovalStatusLists" EntityType="Self.ApprovalStatusList" />
+          <EntitySet Name="BusinessClassifications" EntityType="Self.BusinessClassification" />
+          <EntitySet Name="BusinessRequirements" EntityType="Self.BusinessRequirement" />
+          <EntitySet Name="ExpirationStatusLists" EntityType="Self.ExpirationStatusList" />
+          <EntitySet Name="GenderTables" EntityType="Self.GenderTable" />
+          <EntitySet Name="RequirementLists" EntityType="Self.RequirementList" />
+          <EntitySet Name="RequirementPerClassifications" EntityType="Self.RequirementPerClassification" />
+          <EntitySet Name="SubmissionStatusLists" EntityType="Self.SubmissionStatusList" />
+          <EntitySet Name="Table_2" EntityType="Self.Table_2" />
+          <EntitySet Name="tbl_ProductMaster" EntityType="Self.tbl_ProductMaster" />
+          <EntitySet Name="tblCountries" EntityType="Self.tblCountry" />
+          <FunctionImport Name="PopulateAllRequirements" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.PopulateAllRequirements_Result)">
+            <Parameter Name="ClassificationId" Mode="In" Type="String" />
+            <Parameter Name="BusinessId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PopulateApplicableStatusList" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.PopulateApplicableStatusList_Result)" />
+          <FunctionImport Name="PopulateApprovalStatusList" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.PopulateApprovalStatusList_Result)" />
+          <FunctionImport Name="PopulateBusinessClassification" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.PopulateBusinessClassification_Result)" />
+          <FunctionImport Name="PopulateExpirationStatus" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.PopulateExpirationStatus_Result)" />
+          <FunctionImport Name="PopulateSubmissionStatusList" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.PopulateSubmissionStatusList_Result)" />
+          <FunctionImport Name="ReportCountofBusinessPerClassification" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.ReportCountofBusinessPerClassification_Result)" />
+          <FunctionImport Name="sp_AdminSearch" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.sp_AdminSearch_Result)">
+            <Parameter Name="searchtitle" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetAllProducts" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.sp_GetAllProducts_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetbyRequirementID" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.sp_GetbyRequirementID_Result)">
+            <Parameter Name="requirementid" Mode="In" Type="Int32" />
+            <Parameter Name="BusinessId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetProductID" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.sp_GetProductID_Result)">
+          <Parameter Name="ProductID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertorUpdateRequirement">
+            <Parameter Name="businessrequirementid" Mode="In" Type="Int32" />
+            <Parameter Name="expirationdate" Mode="In" Type="DateTime" />
+            <Parameter Name="expirationstatus" Mode="In" Type="String" />
+            <Parameter Name="applicablestatus" Mode="In" Type="String" />
+            <Parameter Name="serialno" Mode="In" Type="String" />
+            <Parameter Name="RequirementId" Mode="In" Type="String" />
+            <Parameter Name="BusinessId" Mode="In" Type="String" />
+            <Parameter Name="ApprovalStatus" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertProducts" ReturnType="Collection(String)">
+            <Parameter Name="BusinessName" Mode="In" Type="String" />
+            <Parameter Name="BusinessOwner" Mode="In" Type="String" />
+            <Parameter Name="BusinessAddress" Mode="In" Type="String" />
+            <Parameter Name="ContactNumber" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Website" Mode="In" Type="String" />
+            <Parameter Name="ImageLink" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="ClassificationId" Mode="In" Type="String" />
+            <Parameter Name="StatusId" Mode="In" Type="String" />
+            <Parameter Name="ImageFileName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertUserAccount" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="UserPassword" Mode="In" Type="String" />
+            <Parameter Name="UserRePassword" Mode="In" Type="String" />
+            <Parameter Name="Firstname" Mode="In" Type="String" />
+            <Parameter Name="Lastname" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Age" Mode="In" Type="Int32" />
+            <Parameter Name="ContactNumber" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="imgext" Mode="In" Type="String" />
+            <Parameter Name="imgname" Mode="In" Type="String" />
+            <Parameter Name="imgpath" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PopulateGender" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.sp_PopulateGender_Result)" />
+          <FunctionImport Name="sp_ReportListOfBusiness" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.sp_ReportListOfBusiness_Result)" />
+          <FunctionImport Name="sp_Search" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.sp_Search_Result)">
+            <Parameter Name="searchtitle" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateProducts" ReturnType="Collection(String)">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="BusinessName" Mode="In" Type="String" />
+            <Parameter Name="BusinessOwner" Mode="In" Type="String" />
+            <Parameter Name="BusinessAddress" Mode="In" Type="String" />
+            <Parameter Name="ContactNumber" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Website" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="ClassificationId" Mode="In" Type="String" />
+            <Parameter Name="StatusId" Mode="In" Type="String" />
+            <Parameter Name="ImageFileName" Mode="In" Type="String" />
+            <Parameter Name="ImageLink" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Userlogin" ReturnType="Collection(ONLINE_DATABASE_SYSTEMModel.Userlogin_Result)">
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="UserActivations" EntityType="ONLINE_DATABASE_SYSTEMModel.UserActivation" />
+          <FunctionImport Name="sp_InsertUserActivation" ReturnType="Collection(String)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="ActivationCode" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UserAccountEmailConfirmed" ReturnType="Collection(String)">
+          <Parameter Name="activationCode" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="UserRegs" EntityType="ONLINE_DATABASE_SYSTEMModel.UserReg" />
+        </EntityContainer>
+        <ComplexType Name="PopulateAllRequirements_Result">
+          <Property Type="Int32" Name="RequirementPerClassificationId" Nullable="false" />
+          <Property Type="String" Name="RequirementId" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="BusinessClassificationId" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="RequirementId1" Nullable="false" />
+          <Property Type="String" Name="Requirement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessClassificationId1" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CountingNumber" Nullable="true" />
+          <Property Type="Int32" Name="BusinessRequirementId" Nullable="true" />
+          <Property Type="String" Name="RequirementListId" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ExpirationDate" Nullable="true" />
+          <Property Type="Boolean" Name="ExpirationStatus" Nullable="true" />
+          <Property Type="Boolean" Name="ApplicableStatus" Nullable="true" />
+          <Property Type="String" Name="UserRemarks" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AdminRemarks" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="SubmissionStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApprovalStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BusinessId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RequirementId2" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SubmissionStatusId" Nullable="true" />
+          <Property Type="String" Name="SubStatus" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="requirementidlink" Nullable="false" />
+          <Property Type="String" Name="BusinessId2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EvaluationStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PopulateApplicableStatusList_Result">
+          <Property Type="Int32" Name="ApplicableStatusId" Nullable="false" />
+          <Property Type="String" Name="AppStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PopulateApprovalStatusList_Result">
+          <Property Type="Int32" Name="ApprovalStatusListId" Nullable="false" />
+          <Property Type="String" Name="ApprovStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PopulateBusinessClassification_Result">
+          <Property Type="Int32" Name="ClassificationId" Nullable="false" />
+          <Property Type="String" Name="Classification" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="BusinessTypeId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PopulateExpirationStatus_Result">
+          <Property Type="Int32" Name="ExpirationStatusId" Nullable="false" />
+          <Property Type="String" Name="ExpStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PopulateSubmissionStatusList_Result">
+          <Property Type="Int32" Name="SubmissionStatusId" Nullable="false" />
+          <Property Type="String" Name="SubStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ReportCountofBusinessPerClassification_Result">
+          <Property Type="Int32" Name="BusinessCount" Nullable="true" />
+          <Property Type="String" Name="Classification" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_AdminSearch_Result">
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessOwner" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessAddress" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ImageLink" Nullable="true" MaxLength="700" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="ClassificationId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StatusId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="businessstatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GetAllProducts_Result">
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessOwner" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessAddress" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ImageLink" Nullable="true" MaxLength="700" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="ClassificationId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StatusId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="businessstatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GetbyRequirementID_Result">
+          <Property Type="Int32" Name="RequirementPerClassificationId" Nullable="false" />
+          <Property Type="String" Name="RequirementId" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="BusinessClassificationId" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="RequirementId1" Nullable="false" />
+          <Property Type="String" Name="Requirement" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessClassificationId1" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CountingNumber" Nullable="true" />
+          <Property Type="Int32" Name="BusinessRequirementId" Nullable="true" />
+          <Property Type="String" Name="RequirementListId" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ExpirationDate" Nullable="true" />
+          <Property Type="Boolean" Name="ExpirationStatus" Nullable="true" />
+          <Property Type="Boolean" Name="ApplicableStatus" Nullable="true" />
+          <Property Type="String" Name="UserRemarks" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AdminRemarks" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="SubmissionStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApprovalStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BusinessId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RequirementId2" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="requirementidlink" Nullable="false" />
+          <Property Type="String" Name="BusinessId2" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GetProductID_Result">
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessOwner" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessAddress" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ImageLink" Nullable="true" MaxLength="700" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="ClassificationId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StatusId" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ImageFileName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_PopulateGender_Result">
+          <Property Type="Int32" Name="GenderId" Nullable="false" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_ReportListOfBusiness_Result">
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessOwner" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessAddress" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ImageLink" Nullable="true" MaxLength="700" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="ClassificationId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StatusId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Classification" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="businessstatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_Search_Result">
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="BusinessName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessOwner" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BusinessAddress" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="ContactNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ImageLink" Nullable="true" MaxLength="700" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="String" Name="ClassificationId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StatusId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="businessstatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Userlogin_Result">
+          <Property Type="Int32" Name="Userid" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserPassword" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AccountRole" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="UserActivation">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ActivationCode" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserReg">
+          <Key>
+            <PropertyRef Name="Userid" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="UserPassword" />
+            <PropertyRef Name="UserRePassword" />
+            <PropertyRef Name="Firstname" />
+            <PropertyRef Name="Lastname" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="ContactNumber" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="EmailConfirmed" />
+          </Key>
+          <Property Name="Userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRePassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imgname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="imgext" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="imgpath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AccountRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ONLINE_DATABASE_SYSTEMModelStoreContainer" CdmEntityContainer="ONLINE_DATABASE_SYSTEMEntities">
+          <EntitySetMapping Name="ApplicableStatusLists">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.ApplicableStatusList">
+              <MappingFragment StoreEntitySet="ApplicableStatusList">
+                <ScalarProperty Name="ApplicableStatusId" ColumnName="ApplicableStatusId" />
+                <ScalarProperty Name="AppStatus" ColumnName="AppStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApprovalStatusLists">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.ApprovalStatusList">
+              <MappingFragment StoreEntitySet="ApprovalStatusList">
+                <ScalarProperty Name="ApprovalStatusListId" ColumnName="ApprovalStatusListId" />
+                <ScalarProperty Name="ApprovStatus" ColumnName="ApprovStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessClassifications">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.BusinessClassification">
+              <MappingFragment StoreEntitySet="BusinessClassification">
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="BusinessTypeId" ColumnName="BusinessTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessRequirements">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.BusinessRequirement">
+              <MappingFragment StoreEntitySet="BusinessRequirement">
+                <ScalarProperty Name="BusinessRequirementId" ColumnName="BusinessRequirementId" />
+                <ScalarProperty Name="RequirementListId" ColumnName="RequirementListId" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="ExpirationStatus" ColumnName="ExpirationStatus" />
+                <ScalarProperty Name="ApplicableStatus" ColumnName="ApplicableStatus" />
+                <ScalarProperty Name="UserRemarks" ColumnName="UserRemarks" />
+                <ScalarProperty Name="AdminRemarks" ColumnName="AdminRemarks" />
+                <ScalarProperty Name="SubmissionStatus" ColumnName="SubmissionStatus" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="ApprovalStatus" ColumnName="ApprovalStatus" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="RequirementId" ColumnName="RequirementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpirationStatusLists">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.ExpirationStatusList">
+              <MappingFragment StoreEntitySet="ExpirationStatusList">
+                <ScalarProperty Name="ExpirationStatusId" ColumnName="ExpirationStatusId" />
+                <ScalarProperty Name="ExpStatus" ColumnName="ExpStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenderTables">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.GenderTable">
+              <MappingFragment StoreEntitySet="GenderTable">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequirementLists">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.RequirementList">
+              <MappingFragment StoreEntitySet="RequirementList">
+                <ScalarProperty Name="RequirementId" ColumnName="RequirementId" />
+                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+                <ScalarProperty Name="BusinessClassificationId" ColumnName="BusinessClassificationId" />
+                <ScalarProperty Name="CountingNumber" ColumnName="CountingNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequirementPerClassifications">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.RequirementPerClassification">
+              <MappingFragment StoreEntitySet="RequirementPerClassification">
+                <ScalarProperty Name="RequirementPerClassificationId" ColumnName="RequirementPerClassificationId" />
+                <ScalarProperty Name="RequirementId" ColumnName="RequirementId" />
+                <ScalarProperty Name="BusinessClassificationId" ColumnName="BusinessClassificationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubmissionStatusLists">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.SubmissionStatusList">
+              <MappingFragment StoreEntitySet="SubmissionStatusList">
+                <ScalarProperty Name="SubmissionStatusId" ColumnName="SubmissionStatusId" />
+                <ScalarProperty Name="SubStatus" ColumnName="SubStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_2">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.Table_2">
+              <MappingFragment StoreEntitySet="Table_2">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ProductMaster">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.tbl_ProductMaster">
+              <MappingFragment StoreEntitySet="tbl_ProductMaster">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessOwner" ColumnName="BusinessOwner" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCountries">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.tblCountry">
+              <MappingFragment StoreEntitySet="tblCountries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PopulateAllRequirements" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.PopulateAllRequirements">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.PopulateAllRequirements_Result">
+                <ScalarProperty Name="RequirementPerClassificationId" ColumnName="RequirementPerClassificationId" />
+                <ScalarProperty Name="RequirementId" ColumnName="RequirementId" />
+                <ScalarProperty Name="BusinessClassificationId" ColumnName="BusinessClassificationId" />
+                <ScalarProperty Name="RequirementId1" ColumnName="RequirementId1" />
+                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+                <ScalarProperty Name="BusinessClassificationId1" ColumnName="BusinessClassificationId1" />
+                <ScalarProperty Name="CountingNumber" ColumnName="CountingNumber" />
+                <ScalarProperty Name="BusinessRequirementId" ColumnName="BusinessRequirementId" />
+                <ScalarProperty Name="RequirementListId" ColumnName="RequirementListId" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="ExpirationStatus" ColumnName="ExpirationStatus" />
+                <ScalarProperty Name="ApplicableStatus" ColumnName="ApplicableStatus" />
+                <ScalarProperty Name="UserRemarks" ColumnName="UserRemarks" />
+                <ScalarProperty Name="AdminRemarks" ColumnName="AdminRemarks" />
+                <ScalarProperty Name="SubmissionStatus" ColumnName="SubmissionStatus" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="ApprovalStatus" ColumnName="ApprovalStatus" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="RequirementId2" ColumnName="RequirementId2" />
+                <ScalarProperty Name="SubmissionStatusId" ColumnName="SubmissionStatusId" />
+                <ScalarProperty Name="SubStatus" ColumnName="SubStatus" />
+                <ScalarProperty Name="requirementidlink" ColumnName="requirementidlink" />
+                <ScalarProperty Name="BusinessId2" ColumnName="BusinessId2" />
+                <ScalarProperty Name="EvaluationStatus" ColumnName="EvaluationStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PopulateApplicableStatusList" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.PopulateApplicableStatusList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.PopulateApplicableStatusList_Result">
+                <ScalarProperty Name="ApplicableStatusId" ColumnName="ApplicableStatusId" />
+                <ScalarProperty Name="AppStatus" ColumnName="AppStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PopulateApprovalStatusList" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.PopulateApprovalStatusList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.PopulateApprovalStatusList_Result">
+                <ScalarProperty Name="ApprovalStatusListId" ColumnName="ApprovalStatusListId" />
+                <ScalarProperty Name="ApprovStatus" ColumnName="ApprovStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PopulateBusinessClassification" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.PopulateBusinessClassification">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.PopulateBusinessClassification_Result">
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="BusinessTypeId" ColumnName="BusinessTypeId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PopulateExpirationStatus" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.PopulateExpirationStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.PopulateExpirationStatus_Result">
+                <ScalarProperty Name="ExpirationStatusId" ColumnName="ExpirationStatusId" />
+                <ScalarProperty Name="ExpStatus" ColumnName="ExpStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PopulateSubmissionStatusList" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.PopulateSubmissionStatusList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.PopulateSubmissionStatusList_Result">
+                <ScalarProperty Name="SubmissionStatusId" ColumnName="SubmissionStatusId" />
+                <ScalarProperty Name="SubStatus" ColumnName="SubStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReportCountofBusinessPerClassification" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.ReportCountofBusinessPerClassification">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.ReportCountofBusinessPerClassification_Result">
+                <ScalarProperty Name="BusinessCount" ColumnName="BusinessCount" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_AdminSearch" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_AdminSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.sp_AdminSearch_Result">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessOwner" ColumnName="BusinessOwner" />
+                <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="businessstatus" ColumnName="businessstatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetAllProducts" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_GetAllProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.sp_GetAllProducts_Result">
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessOwner" ColumnName="BusinessOwner" />
+                <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="businessstatus" ColumnName="businessstatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetbyRequirementID" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_GetbyRequirementID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.sp_GetbyRequirementID_Result">
+                <ScalarProperty Name="RequirementPerClassificationId" ColumnName="RequirementPerClassificationId" />
+                <ScalarProperty Name="RequirementId" ColumnName="RequirementId" />
+                <ScalarProperty Name="BusinessClassificationId" ColumnName="BusinessClassificationId" />
+                <ScalarProperty Name="RequirementId1" ColumnName="RequirementId1" />
+                <ScalarProperty Name="Requirement" ColumnName="Requirement" />
+                <ScalarProperty Name="BusinessClassificationId1" ColumnName="BusinessClassificationId1" />
+                <ScalarProperty Name="CountingNumber" ColumnName="CountingNumber" />
+                <ScalarProperty Name="BusinessRequirementId" ColumnName="BusinessRequirementId" />
+                <ScalarProperty Name="RequirementListId" ColumnName="RequirementListId" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="ExpirationStatus" ColumnName="ExpirationStatus" />
+                <ScalarProperty Name="ApplicableStatus" ColumnName="ApplicableStatus" />
+                <ScalarProperty Name="UserRemarks" ColumnName="UserRemarks" />
+                <ScalarProperty Name="AdminRemarks" ColumnName="AdminRemarks" />
+                <ScalarProperty Name="SubmissionStatus" ColumnName="SubmissionStatus" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="ApprovalStatus" ColumnName="ApprovalStatus" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="RequirementId2" ColumnName="RequirementId2" />
+                <ScalarProperty Name="requirementidlink" ColumnName="requirementidlink" />
+                <ScalarProperty Name="BusinessId2" ColumnName="BusinessId2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetProductID" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_GetProductID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.sp_GetProductID_Result">
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessOwner" ColumnName="BusinessOwner" />
+                <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertorUpdateRequirement" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_InsertorUpdateRequirement" />
+          <FunctionImportMapping FunctionImportName="sp_InsertProducts" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_InsertProducts" />
+          <FunctionImportMapping FunctionImportName="sp_InsertUserAccount" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_InsertUserAccount" />
+          <FunctionImportMapping FunctionImportName="sp_PopulateGender" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_PopulateGender">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.sp_PopulateGender_Result">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ReportListOfBusiness" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_ReportListOfBusiness">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.sp_ReportListOfBusiness_Result">
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessOwner" ColumnName="BusinessOwner" />
+                <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="businessstatus" ColumnName="businessstatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Search" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_Search">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.sp_Search_Result">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessOwner" ColumnName="BusinessOwner" />
+                <ScalarProperty Name="BusinessAddress" ColumnName="BusinessAddress" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClassificationId" ColumnName="ClassificationId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="businessstatus" ColumnName="businessstatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UpdateProducts" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_UpdateProducts" />
+          <FunctionImportMapping FunctionImportName="Userlogin" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.Userlogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.Userlogin_Result">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="AccountRole" ColumnName="AccountRole" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="UserActivations">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.UserActivation">
+              <MappingFragment StoreEntitySet="UserActivation">
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.UserActivation">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_InsertUserActivation">
+                  <ScalarProperty Name="ActivationCode" ParameterName="ActivationCode" />
+                  <ScalarProperty Name="UserId" ParameterName="UserId" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertUserActivation" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_InsertUserActivation" />
+          <FunctionImportMapping FunctionImportName="sp_UserAccountEmailConfirmed" FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_UserAccountEmailConfirmed" />
+          <EntitySetMapping Name="UserRegs">
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.UserReg">
+              <MappingFragment StoreEntitySet="UserReg">
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="AccountRole" ColumnName="AccountRole" />
+                <ScalarProperty Name="imgpath" ColumnName="imgpath" />
+                <ScalarProperty Name="imgext" ColumnName="imgext" />
+                <ScalarProperty Name="imgname" ColumnName="imgname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="UserRePassword" ColumnName="UserRePassword" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ONLINE_DATABASE_SYSTEMModel.UserReg">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ONLINE_DATABASE_SYSTEMModel.Store.sp_InsertUserAccount">
+                  <ScalarProperty Name="imgpath" ParameterName="imgpath" />
+                  <ScalarProperty Name="imgname" ParameterName="imgname" />
+                  <ScalarProperty Name="imgext" ParameterName="imgext" />
+                  <ScalarProperty Name="Address" ParameterName="Address" />
+                  <ScalarProperty Name="ContactNumber" ParameterName="ContactNumber" />
+                  <ScalarProperty Name="Age" ParameterName="Age" />
+                  <ScalarProperty Name="Gender" ParameterName="Gender" />
+                  <ScalarProperty Name="Lastname" ParameterName="Lastname" />
+                  <ScalarProperty Name="Firstname" ParameterName="Firstname" />
+                  <ScalarProperty Name="UserRePassword" ParameterName="UserRePassword" />
+                  <ScalarProperty Name="UserPassword" ParameterName="UserPassword" />
+                  <ScalarProperty Name="Email" ParameterName="Email" />
+                  <ScalarProperty Name="UserName" ParameterName="UserName" />
+                  <ResultBinding Name="Userid" ColumnName="Userid" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

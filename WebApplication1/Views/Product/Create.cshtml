@@ -1,0 +1,188 @@
+﻿@model WebApplication1.Models.Product
+
+@{
+    //ViewBag.Title = "Create";
+}
+
+@*<meta name="viewport" content="width=device-width" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+
+
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    //@Html.EditorFor(model => model.ProductID)
+
+    //@Html.EditorFor(model => model.ImagePath)
+    //@Html.ValidationMessageFor(model => model.ImagePath, null, new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <h2>Add New Business Profile</h2>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>Error! </strong> @TempData["ErrorMessage"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span>&times;</span>
+                </button>
+            </div>
+        }
+
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <lablel>Max Image file Size: 2MB</lablel><br />
+                @*@if (Model.ImagePath == null || Model.ImagePath == "")
+                {
+                    Model.ImagePath = "~/ProductImages/businessdefaultpic.jpg";
+                    //<img src="~/ProductImages/businessdefaultpic.jpg" />
+                }*@
+                <img src="~/ProductImages/businessdefaultpic.jpg" alt="preview" id="imagePreview" style="border: 5px solid grey; height: 169px; width: 176px; display: block;" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label class="control-label col-md-2">Profile Picture</label>
+                <div class="col-md-10">
+                    <input type="file" name="file" value="" onchange="return ShowImagePreview(this)" class="form-control" id="fileupload" />
+                    @Html.ValidationMessageFor(model => model.file, null, new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+        <script>
+            function ShowImagePreview(input) {
+
+                debugger;
+                if (input.files && input.files[0]) {
+                    var fname = input.files[0].name;
+
+                    var filesize = input.files[0].fsize;
+                    var size = parseFloat(input.files[0].size).toFixed(2);
+                    //alert(size);
+                    //var Maxvalue = 1048576;
+                    var Maxvalue = 2121592;
+                    if (size > Maxvalue)
+                    {
+                        //alert(Maxvalue);
+                        alert("Image Size is too large!");
+                        $("#fileupload").val("");
+
+                        return false;
+                    }
+
+                    var re = /(\.jpg|\.jpeg|\.bmp|\.gif|\.png)$/i;
+                    if (!re.exec(fname)) {
+                        alert("Image not supported!");
+                        $("#fileupload").val("");
+
+                        return false;
+                    }
+                    else {
+                        //document.getElementById("ImagePath").textContent = "asa";
+
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#imagePreview').prop('src', e.target.result);
+
+                            //@Session["image"] = e.target.result;
+                            $('#ImagePath').val("Imageuploaded");
+                            $('#ImagePath').val(filesize);
+                            //$('#imagePreview').text =
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            }
+        </script>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClassificationId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.ClassificationId, Model.classificationlist, "--Select Classification--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClassificationId, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BusinessName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BusinessName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BusinessName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BusinessOwner, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BusinessOwner, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BusinessOwner, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BusinessAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BusinessAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BusinessAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*<script>
+        function changepathval() {
+            if ($('#imagePreview').val === null) {
+                        $('#ImagePath').val("");
+                        //$('#imagePreview').text =
+                }
+          }
+    </script>*@

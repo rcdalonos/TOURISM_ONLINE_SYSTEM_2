@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Session["username"] != null)
+{
+    //using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right", @style = "color: white" }))
+    //{
+        @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+    @*<li>
+            @Html.ActionLink("" + Session["username"].ToString() + "", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" , @style = "color: white" })
+        </li>*@
+    <li>
+        <a class="navbar-brand">
+            @if (Session["UserImagePath"] == null || Session["UserImagePath"] == "")
+            {
+                Session["UserImagePath"] = "~/UserImages/UserDefaultPic.png";
+            }
+            <img src="@Url.Content(Session["UserImagePath"].ToString())" alt="" height="25" width="25" style="border-radius:50%" />
+        </a>
+    </li>
+    <li class="dropdown">
+
+        <a style="color: white" href="#" class="dropdown-toggle" data-toggle="dropdown"
+           role="button" aria-expanded="false">@Session["username"].ToString()<caret class="caret"></caret></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Edit Account", "EditUserAccount", "UserLogin")</li>
+            @*<li>@Html.ActionLink("Chart", "GraphReportofBusinessPerClassification", "ReportCon")</li>*@
+
+           
+        </ul>
+    </li>
+    <li>@Html.ActionLink("Logout", "signout", "UserLogin", htmlAttributes: new { @style = "color: white" })</li>
+
+    @*<li><a href="javascript:document.getElementById('logoutForm').submit()" style="color: White">Log off</a></li>*@
+    </ul>
+}
+    @*}*@
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "NewUserAccountRegistration2", "UserLogin", routeValues: null, htmlAttributes: new { id = "registerLink", @style = "color: white" })</li>
+        <li>@Html.ActionLink("Log in", "Index", "UserLogin", routeValues: null, htmlAttributes: new { id = "loginLink", @style = "color: white" })</li>
+    </ul>
+}
+

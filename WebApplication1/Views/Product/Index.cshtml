@@ -1,0 +1,193 @@
+﻿@model IPagedList<WebApplication1.Models.Product>
+@using PagedList.Mvc;
+@using PagedList;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Session["username"] != null)
+{
+    //<h2>Welcome @Session["username"].ToString()</h2>
+    //<h2>id: @Session["userid"].ToString()</h2>
+}
+else
+{
+    Response.Redirect("Home/Index");
+
+}
+@*@Html.ActionLink("Logout", "Index")*@
+
+
+
+<br />
+<center><h2>List of Tourism Related Business</h2></center>
+<br />
+
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info">
+        <strong>Information : </strong> @TempData["InfoMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success! </strong> @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error! </strong> @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+@*@using (Html.BeginForm("Index", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {*@
+<form asp-controller="Product" asp-action="Index" method="get" enctype="multipart/form-data">
+    <p>
+        <table class="table">
+            <tr>
+                <th text-align: left>
+                    Business Name: 
+                    @*<input type="text" name="SearchString" class="form-control" value="SearchString" />*@
+                    @Html.TextBox("SearchString")
+                    <input type="submit" value="Filter" />
+                </th>
+                <th text-align: right>
+                    @Html.ActionLink("Add New Tourism Related Business", "Create", null, new { @class = "btn btn-primary" })
+                </th>
+            </tr>
+        </table>
+
+    </p>
+
+</form>
+  
+    
+    <table class="table">
+        <tr>
+
+            <th>
+                Picture
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.First().BusinessName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.First().BusinessOwner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BusinessAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BusinessStatustext)
+            </th>
+
+            <th>
+                <label>Actions</label>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @*<img src="~/Content/DesignImages/ppc brand logo.png" alt="" width="300px" />*@
+                    @if (item.ImagePath == null || item.ImagePath == "")
+                    {
+                        item.ImagePath = "~/ProductImages/businessdefaultpic.jpg";
+                    }
+                    <img src="@Url.Content(item.ImagePath)" id="@item.UserId" class="AddPopUp" alt="" height="100" width="100" style="border-radius:20px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessOwner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessStatustext)
+                </td>
+                <td>
+                    @*@Html.ActionLink(string linktext,string actionname,string controllername, string protocol)*@
+                    @Html.ActionLink("Edit Business Profile", "Edit", new { id = item.ProductID }, new { @class = "btn btn-primary" }) &nbsp;
+                    @Html.ActionLink("Submit Requirements", "ListOfRequirements", "Requirement", new { ClassificationId = item.ClassificationId, businessid = item.ProductID }, new { @class = "btn btn-success" }) &nbsp;
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @*===========POPUP MODAL======*@
+    <div class="AddPopUp">
+        @*@Html.Label("Add pop up")*@
+    </div>
+    <div class="modal fade" id="MyPopUp" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="ClosePopUp">
+                        @Html.Label("Close")
+                    </div>
+                    <img id="popupimage" src="#" alt="" width="300px" />
+                    @*<img src="~/ProductImages/businessdefaultpic.jpg" />*@
+                    @*here are going your controls etc*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+@Html.PagedListPager(Model, i => Url.Action("Index", "Product", new { i, search = Request.QueryString["search"] }))
+@*}*@
+
+@*===========POPUP MODAL======*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".AddPopUp").click(function (e) {
+            document.getElementById("popupimage").src = document.getElementById("logo").src;
+            $('#MyPopUp').modal('show');
+        });
+        $(".ClosePopUp").click(function (e) {
+            document.getElementById("popupimage").src = document.getElementById("logo").src;
+            $('#MyPopUp').modal('hide');
+        });
+    });
+
+
+    /*<script type="text/javascript">*/
+        function preventBack() {
+            window.history.forward();
+    }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () {
+            null;
+    }
+
+@*</script>*@
+
+</script>

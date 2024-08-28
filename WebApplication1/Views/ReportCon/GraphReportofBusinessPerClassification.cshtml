@@ -1,0 +1,13 @@
+﻿@using Microsoft.Reporting;
+@using Microsoft.Reporting.WebForms;
+@using ReportViewerForMvc;
+
+@{
+    ViewBag.Title = "Reports";
+}
+<br />
+<h2>Graphical Report of Number of Business Per Classification</h2>
+
+@*@Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)*@
+<br />
+@Html.ReportViewer(ViewBag.ReportViewer2 as Microsoft.Reporting.WebForms.ReportViewer)

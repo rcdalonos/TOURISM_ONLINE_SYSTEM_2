@@ -1,0 +1,7 @@
+https://www.aspsnippets.com/Articles/ASPNet-MVC-Send-user-Confirmation-email-after-Registration-with-Activation-Link.aspx
+https://www.aspsnippets.com/Articles/Simple-User-Registration-Form-with-Entity-Framework-Database-in-ASPNet-MVC.aspx
+
+https://code-maze.com/email-confirmation-aspnet-core-identity/
+https://www.c-sharpcorner.com/blogs/account-confirmation-with-asp-net-mvc-identity-using-email-template3
+https://stackoverflow.com/questions/36627256/email-confirmation-asp-net-mvc
+https://www.codeproject.com/Tips/738090/ASP-NET-MVC-Confirm-Registration-Email?msg=4855238#xx4855238xx

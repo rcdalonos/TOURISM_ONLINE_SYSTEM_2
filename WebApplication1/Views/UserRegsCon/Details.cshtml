@@ -1,0 +1,50 @@
+﻿@model WebApplication1.UserReg
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserReg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imgname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imgname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imgext)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imgext)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imgpath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imgpath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountRole)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

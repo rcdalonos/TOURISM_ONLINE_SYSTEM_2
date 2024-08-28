@@ -1,0 +1,229 @@
+﻿@model WebApplication1.Models.LoginModelClass
+
+@*@model WebApplication1.UserReg*@
+
+
+@{
+    ViewBag.Title = "NewUserAccountRegistration";
+}
+
+<meta name="viewport" content="width=device-width" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<h2>New User Account Registration</h2>
+
+@if (Html.ViewData["UserLogInNotAvailable"] != null)
+{
+
+    <div class="alert alert-danger">
+        <strong>Error! </strong> @Html.ViewData["UserLogInNotAvailable"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+
+
+<br />
+@using (Html.BeginForm("NewUserAccountRegistration", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @*//============PREVIEW IMAGE==============*@
+
+
+    @*<form action="/ImageUpload/fileSave" method="post" enctype="multipart/form-data">*@
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*//=======image*@
+        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <lablel>Max Image file Size: 2MB</lablel><br />
+                    <img src="#" alt="preview" id="imagePreview" style="border: 5px solid grey; height: 169px; width: 176px; display: block;" class="form-control" />
+                </div>
+            </div>*@
+
+        @*<div class="form-group">
+            <label class="control-label col-md-2">Profile Picture</label>
+            <div class="col-md-10">
+                <input type="file" name="file" value="" onchange="return ShowImagePreview(this)" class="form-control" id="fileupload" />*@
+
+        @*@Html.ValidationMessageFor(model => model.file, null, new { @class = "text-danger" })*@
+
+        @*</div>
+            </div>*@
+        @*=============image*@
+
+        <script>
+            function ShowImagePreview(input) {
+
+                debugger;
+                if (input.files && input.files[0]) {
+                    var fname = input.files[0].name;
+
+                    var filesize = input.files[0].fsize;
+                    var size = parseFloat(input.files[0].size).toFixed(2);
+                    //alert(size);
+                    //var Maxvalue = 1048576;
+                    var Maxvalue = 2121592;
+                    if (size > Maxvalue) {
+                        //alert(Maxvalue);
+                        alert("Image Size is too large!");
+                        $("#fileupload").val("");
+
+                        return false;
+                    }
+
+                    var re = /(\.jpg|\.jpeg|\.bmp|\.gif|\.png)$/i;
+                    if (!re.exec(fname)) {
+                        alert("Image not supported!");
+                        $("#fileupload").val("");
+
+                        return false;
+                    }
+                    else {
+                        //document.getElementById("ImagePath").textContent = "asa";
+
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            //$('#imagePreview').prop('src', e.target.result);
+
+                            //$('#ImagePath').val("Imageuploaded");
+                            //$('#ImagePath').val(filesize);
+                            //$('#imagePreview').text =
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            }
+        </script>
+        @*//============PREVIEW IMAGE END==============*@
+
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => Model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.Firstname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.genderid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownList("model.GenderList","Select Gender")
+                @Html.DropDownListFor(Model => Model.genderid, Model.genderlist, "--Select Gender--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(Model => Model.genderid, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.Age, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(Model => Model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.ContactNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(Model => Model.UserRePassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(Model => Model.UserRePassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(Model => Model.UserRePassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+
+
+        @*@if (TempData["UserLogInNotAvailable"] != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Error! </strong> @TempData["UserLogInNotAvailable"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+            }*@
+
+        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <h2> @Html.ViewData["UserLogInNotAvailable"]</h2>
+                </div>
+
+            </div>*@
+
+
+
+    </div>
+
+    @*</form>*@
+}
+
+<div>
+    @Html.ActionLink("Back to Login", "Index")
+</div>

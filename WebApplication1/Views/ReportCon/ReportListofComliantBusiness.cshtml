@@ -1,0 +1,13 @@
+﻿
+@using Microsoft.Reporting;
+@using Microsoft.Reporting.WebForms;
+@using ReportViewerForMvc;
+
+@{
+    ViewBag.Title = "Reports";
+}
+<br />
+<h3>List of Tourism Related Businesses</h3>
+<br />
+@Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer)
+

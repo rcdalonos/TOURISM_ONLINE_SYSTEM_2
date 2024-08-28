@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c0bb3e305ef451cb777a5ea6144b410" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.ApplicableStatusList" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.ApprovalStatusList" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.BusinessClassification" Width="2.25" PointX="0.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.BusinessRequirement" Width="1.5" PointX="2.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.ExpirationStatusList" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.GenderTable" Width="1.5" PointX="4.875" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.RequirementList" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.RequirementPerClassification" Width="1.5" PointX="6.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.SubmissionStatusList" Width="1.5" PointX="4.875" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.Table_2" Width="1.5" PointX="6.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.tbl_ProductMaster" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.tblCountry" Width="1.5" PointX="0.875" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.UserActivation" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ONLINE_DATABASE_SYSTEMModel.UserReg" Width="1.5" PointX="8.875" PointY="5.875" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

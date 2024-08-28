@@ -1,0 +1,87 @@
+﻿@model IEnumerable<WebApplication1.Models.RequirementsModel>
+
+@{
+    ViewBag.Title = "ListOfRequirements";
+}
+
+<h2>List Of Requirements</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Picture
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalStatusText)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Requirement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicableStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpirationStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpirationDate)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.RequirementId)
+            </th>*@
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        
+        <tr>
+            <td>
+                @*<img src="~/Content/DesignImages/ppc brand logo.png" alt="" width="300px" />*@
+                @if (item.imgpath == null || item.imgpath == "")
+                {
+                    item.imgpath = "~/RequirementImages/requirementdefaultpic.jpg";
+                }
+                <img src="@Url.Content(item.imgpath)" alt="" height="100" width="70" style="border-radius:20px" />
+            </td>
+
+            <th>
+                @Html.DisplayFor(modelItem => item.ApprovalStatusText)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requirement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicableStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpirationDate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.RequirementId)
+                </td>*@
+            <td>
+                @Html.ActionLink("Update Requirement", "EditRequirements", new { id = item.BusinessRequirementId, requirementtext = item.Requirement, RequirementId = item.RequirementId, BusinessId = item.BusinessId })
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div>
+    @Html.ActionLink("Back to List of Business", "Index", "Product")
+</div>
